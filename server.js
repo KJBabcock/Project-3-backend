@@ -1,12 +1,14 @@
 // importing statements
 const express = require('express') // commonJS import statement
 const methodOverride = require('method-override');
+require("dotenv").config();
 require('./config/db.connection')
 // CONTROLLER IMPORTS
 
 // app configuration
 const app = express()
-const PORT = 4000
+const PORT = process.env.PORT;
+
 
 // MIDDLEWARE
 app.use(methodOverride('_method'));
@@ -17,6 +19,8 @@ app.use(express.urlencoded({ extended: false }));
 const db = require("./models/Strategy");
 
 // MIDDLEWARE - code that runs for every request (before routes)
+
+
 // Router - Products
 
 //  home route
@@ -56,5 +60,5 @@ app.put("/:id", async (req, res) => {
 });
 
 // SERVER
-app.listen(4000, () => console.log('starting server at port:', PORT))
+app.listen(PORT, () => console.log('starting server at port:', PORT))
 // exports module.exports = app
