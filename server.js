@@ -49,7 +49,7 @@ app.delete('/:id', async (req, res) => {
 //edit
 app.put("/:id", async (req, res) => {
     try{
-        res.json(await Strategy.findByIdAndUpdate(req.params.id, req.body, {new:true})
+        res.json(await Strategy.findByIdAndUpdate(req.params.id, req.body, {new:true}))
     } catch(error) {
         res.status(400).json(error);
     }
