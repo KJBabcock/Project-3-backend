@@ -1,6 +1,7 @@
 // importing statements
 const express = require('express') // commonJS import statement
 const methodOverride = require('method-override');
+const cors = require("cors")
 require("dotenv").config();
 require('./config/db.connection')
 // CONTROLLER IMPORTS
@@ -19,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 const db = require("./models/Strategy");
 
 // MIDDLEWARE - code that runs for every request (before routes)
-
+app.use(cors())
 
 // Router - Products
 
