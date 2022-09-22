@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //Model import
-const db = require("./models/Strategy");
+const Strategy = require("./models/Strategy");
 
 // MIDDLEWARE - code that runs for every request (before routes)
 app.use(cors())
@@ -26,17 +26,16 @@ app.use(cors())
 
 //  home route
 app.get("/", async (req, res) => {
-    const strategies = await db.find({});
+    const strategies = await Strategy.find({});
     // send projects via JSON
     res.json(strategies);
 });
 
 //post
 app.post('/', async (req, res) => {
+    console.log(req.body)
     try {
         res.json(await Strategy.create(req.body));
-        console.log(req);
-        console.log(body)
     }catch (error) {
         res.status(400).json(error)
     }
